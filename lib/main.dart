@@ -1,3 +1,7 @@
+
+
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,6 +37,7 @@ class _HomePageState extends State<HomePage> {
 
   double _heightSliderValue = 170;
   double _weightSliderValue = 80;
+  int _bmi = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +68,22 @@ class _HomePageState extends State<HomePage> {
               });
             },
           ),
+          Text("Your BMI is $_bmi"),
 
-          TextButton.icon(onPressed: (){},
+          TextButton.icon(onPressed: (){
+
+            // weight (kg)  / (height (m))^2;
+            var bmiTemp =  _weightSliderValue / pow((_heightSliderValue/100), 2);
+            print(bmiTemp);
+            // ASSIGNING bmiTemp into _bmi
+            // _bmi = bmiTemp.round();
+
+            //ASSIGN bmiTemp into _bmi
+            // Refresh the part of UI that has _bmi and show the updated value
+            setState(() {
+              _bmi = bmiTemp.round();
+            });
+          },
               icon: Icon(Icons.favorite), label: Text("Calculate BMI"))
 
         ],
