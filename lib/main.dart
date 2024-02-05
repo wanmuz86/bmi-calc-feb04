@@ -32,6 +32,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   double _heightSliderValue = 170;
+  double _weightSliderValue = 80;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,17 @@ class _HomePageState extends State<HomePage> {
               });
             },
           ),
-          Text("Width: (80kg)", style: TextStyle(fontSize: 20),),
+          Text("Width: (${_weightSliderValue.round()} kg)", style: TextStyle(fontSize: 20),),
+          Slider(
+            value: _weightSliderValue,
+            max: 200,
+            onChanged: (double value) {
+              setState(() {
+                _weightSliderValue = value;
+              });
+            },
+          ),
+
           TextButton.icon(onPressed: (){},
               icon: Icon(Icons.favorite), label: Text("Calculate BMI"))
 
