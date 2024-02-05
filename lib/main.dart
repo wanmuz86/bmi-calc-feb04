@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
@@ -43,13 +43,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("BMI Calculator"), backgroundColor: Colors.red,),
+      appBar: AppBar(title: const Text("BMI Calculator"), backgroundColor: Colors.red,),
       body: Column(
         children: [
-          Text("BMI Calculator", style: TextStyle(color: Colors.red, fontSize: 32),),
-          Text("We care about your health", style: TextStyle(fontSize: 24),),
+          const Text("BMI Calculator", style: TextStyle(color: Colors.red, fontSize: 32),),
+          const Text("We care about your health", style: TextStyle(fontSize: 24),),
           Image.network("https://www.cdc.gov/healthyweight/images/assessing/bmi-adult-fb-600x315.jpg"),
-          Text("Height : (${_heightSliderValue.round()} cm) ", style: TextStyle(fontSize: 20),),
+          Text("Height : (${_heightSliderValue.round()} cm) ", style: const TextStyle(fontSize: 20),),
           Slider(
             value: _heightSliderValue,
             max: 220,
@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
               });
             },
           ),
-          Text("Width: (${_weightSliderValue.round()} kg)", style: TextStyle(fontSize: 20),),
+          Text("Width: (${_weightSliderValue.round()} kg)", style: const TextStyle(fontSize: 20),),
           Slider(
             value: _weightSliderValue,
             max: 200,
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
               });
             },
           ),
-          Text("Your BMI is $_bmi"),
+         _bmi != 0 ? Text("Your bmi is $_bmi") : const SizedBox(),
           Text(_message),
 
           TextButton.icon(onPressed: (){
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
               _message =  messageTemp;
             });
           },
-              icon: Icon(Icons.favorite), label: Text("Calculate BMI"))
+              icon: const Icon(Icons.favorite), label: const Text("Calculate BMI"))
 
         ],
       ),
