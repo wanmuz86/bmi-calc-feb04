@@ -30,6 +30,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  double _heightSliderValue = 170;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +42,16 @@ class _HomePageState extends State<HomePage> {
           Text("BMI Calculator", style: TextStyle(color: Colors.red, fontSize: 32),),
           Text("We care about your health", style: TextStyle(fontSize: 24),),
           Image.network("https://www.cdc.gov/healthyweight/images/assessing/bmi-adult-fb-600x315.jpg"),
-          Text("Height : (170cm) ", style: TextStyle(fontSize: 20),),
+          Text("Height : (${_heightSliderValue.round()} cm) ", style: TextStyle(fontSize: 20),),
+          Slider(
+            value: _heightSliderValue,
+            max: 220,
+            onChanged: (double value) {
+              setState(() {
+                _heightSliderValue = value;
+              });
+            },
+          ),
           Text("Width: (80kg)", style: TextStyle(fontSize: 20),),
           TextButton.icon(onPressed: (){},
               icon: Icon(Icons.favorite), label: Text("Calculate BMI"))
